@@ -3,13 +3,13 @@ defmodule Twilex.Mixfile do
 
   def project do
     [app: :twilex,
-     version: "0.0.2",
+     version: "0.0.3",
      elixir: "~> 1.2",
      description: "A Twilio client for elixir.",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
-     package: package,
-     deps: deps]
+     package: package(),
+     deps: deps()]
   end
 
   # Configuration for the OTP application
@@ -30,8 +30,9 @@ defmodule Twilex.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    [{:httpoison, "~> 0.12.0"},
-     {:poison, "~> 2.0"}]
+    [{:httpoison, "~> 1.0"},
+     {:poison, github: "danj3/poison", branch: "r3.1", override: true },
+    ]
   end
 
   defp package do
